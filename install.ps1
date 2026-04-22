@@ -1,4 +1,4 @@
-# Anime Terminal Themes Installer - Version 1.0.3 (Fixed Syntax)
+# Anime Terminal Themes Installer - Version 1.0.4 (Elite Edition)
 #Requires -Version 5.1
 <#
 .SYNOPSIS
@@ -8,13 +8,11 @@
     One command. Zero hassle. Maximum anime power.
 .PARAMETER Theme
     Skip the menu and install a specific theme directly.
-    Values: dragonballz | scifi | fantasy | romcom | sliceoflife | minimal | mecha
+    Values: dragonballz | scifi | fantasy | romcom | sliceoflife | minimal | mecha | naruto | onepiece | jujutsu | demonslayer | sololeveling
 .PARAMETER Uninstall
     Remove all anime terminal themes and restore defaults.
 .EXAMPLE
     irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/install.ps1 | iex
-.EXAMPLE
-    irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/install.ps1 -OutFile install.ps1; .\install.ps1 -Theme dragonballz
 #>
 
 param(
@@ -26,10 +24,10 @@ param(
 )
 
 # ═══════════════════════════════════════════════════════════════════
-#  CONFIG — Update REPO_URL after uploading to GitHub
+#  CONFIG
 # ═══════════════════════════════════════════════════════════════════
 $REPO_URL   = "https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main"
-$FONT_NAME  = "CascadiaCode"   # Nerd Font to install
+$FONT_NAME  = "CascadiaCode"
 $OMP_DIR    = "$env:LOCALAPPDATA\Programs\oh-my-posh"
 $THEMES_DIR = "$env:POSH_THEMES_PATH"
 
@@ -53,11 +51,8 @@ function Write-OK { param([string]$Msg)
 function Write-Fail { param([string]$Msg)
     Write-Color "  ✘ " "Red" -NoNewLine; Write-Color $Msg "Red" }
 
-function Write-Banner { param([string]$Art, [ConsoleColor]$Color)
-    $Art.Split("`n") | ForEach-Object { Write-Color $_ $Color } }
-
 # ═══════════════════════════════════════════════════════════════════
-#  THEME DEFINITIONS (embedded — no extra downloads needed!)
+#  THEME DEFINITIONS
 # ═══════════════════════════════════════════════════════════════════
 $THEMES = @{
 
@@ -76,112 +71,25 @@ $THEMES = @{
   ██████╔╝██║  ██║███████╗╚██████╔╝╚██████╔╝██║ ╚████║    ██████╔╝██║  ██║███████╗███████╗███████╗
   ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
 '@
+        SubTitle    = "                ⚡ [ POWER LEVEL: OVER 9000 ] [ SAIYAN: READY ] ⚡"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "⚡ {{ .Shell }} :: {{ .Folder }} | POWER LEVEL: OVER 9000 ⚡",
+  "console_title_template": "⚡ {{ .Shell }} :: {{ .Folder }}",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#FF6B00",
-          "template": " ⚡ SAIYAN "
-        },
-        {
-          "type": "os",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FF6B00",
-          "background": "#1A1A2E",
-          "properties": { "windows": "\uf17a " }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#1A1A2E",
-          "background": "#FFD700",
-          "properties": {
-            "style": "folder",
-            "folder_separator_icon": " 龍 ",
-            "folder_icon": "\uf07b",
-            "home_icon": "\uf015"
-          }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#1E3A8A",
-          "foreground_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FFD700{{ end }}"],
-          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FF4500{{ end }}"],
-          "properties": { "branch_icon": "⚡ ", "fetch_status": true }
-        },
-        {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0b0",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FFFFFF",
-          "background": "#8B0000",
-          "template": "{{ if gt .Code 0 }} ✘ {{ .Code }} {{ end }}",
-          "properties": { "always_enabled": false }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFFFF", "background": "#FF6B00", "template": " ⚡ SAIYAN " },
+        { "type": "os", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FF6B00", "background": "#1A1A2E", "properties": { "windows": "\uf17a " } },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#1A1A2E", "background": "#FFD700", "properties": { "style": "folder", "folder_separator_icon": " 龍 ", "folder_icon": "\uf07b" } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#1E3A8A", "properties": { "branch_icon": "⚡ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "rprompt",
-      "overflow": "hidden",
-      "segments": [
-        {
-          "type": "battery",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FF6B00",
-          "background": "#1A1A2E",
-          "foreground_templates": [
-            "{{ if lt .Percentage 20 }}#FF0000{{ end }}",
-            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FFD700{{ end }}",
-            "{{ if ge .Percentage 50 }}#00FF41{{ end }}"
-          ],
-          "template": " {{ if .Error }}N/A{{ else }}⚡ {{ .Percentage }}%{{ end }} ",
-          "properties": { "charged_icon": "⚡ ", "charging_icon": "↑ ", "discharging_icon": "↓ " }
-        },
-        {
-          "type": "time",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FFD700",
-          "background": "#0A0A1A",
-          "properties": { "time_format": "15:04:05" },
-          "template": " \uf017 {{ .CurrentDate | date .Format }} "
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#FF6B00",
-          "template": "❯❯❯ "
-        }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#FF6B00", "template": "❯❯❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -199,7 +107,7 @@ $THEMES = @{
     scifi = @{
         Name        = "Sci-Fi: Ghost Protocol"
         Emoji       = "◈"
-        Description = "Cyberpunk cyan/matrix green. Hack the planet. Ghost in the Shell vibes."
+        Description = "Cyberpunk cyan/matrix green. Hack the planet."
         BgColor     = "#000D1A"
         FgColor     = "#00FFFF"
         WTScheme    = "AnimeSciFi"
@@ -211,107 +119,24 @@ $THEMES = @{
   ╚██████╔╝██║  ██║╚██████╔╝███████║   ██║       ██║     ██║  ██║╚██████╔╝   ██║   ╚██████╔╝╚██████╗╚██████╔╝███████╗
    ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝       ╚═╝     ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝
 '@
+        SubTitle    = "                    [ SYS://ONLINE ] [ HACK: READY ] ◈"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "[ SYS://{{ .Shell }} ] [ PATH://{{ .Folder }} ] [ STATUS: ONLINE ]",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#00FFFF",
-          "background": "#001122",
-          "template": " ◈ SYS "
-        },
-        { "type": "text", "style": "plain", "foreground": "#003355", "template": " " },
-        {
-          "type": "os",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#00FFFF",
-          "background": "#002244",
-          "properties": { "windows": "\uf17a " }
-        },
-        { "type": "text", "style": "plain", "foreground": "#003355", "template": " " },
-        {
-          "type": "path",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#00FF41",
-          "background": "#001A33",
-          "properties": { "style": "full", "folder_separator_icon": " ▸ " }
-        },
-        { "type": "text", "style": "plain", "foreground": "#003355", "template": " " },
-        {
-          "type": "git",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#00FFFF",
-          "background": "#001A2E",
-          "foreground_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FF00FF{{ end }}"],
-          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#1A0033{{ end }}"],
-          "properties": { "branch_icon": "◈ ", "fetch_status": true }
-        },
-        {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FF0044",
-          "background": "#1A0011",
-          "template": "{{ if gt .Code 0 }} ERR:{{ .Code }} {{ end }}",
-          "properties": { "always_enabled": false }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b4", "foreground": "#00FFFF", "background": "#001122", "template": " ◈ SYS " },
+        { "type": "os", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b4", "foreground": "#00FFFF", "background": "#002244", "properties": { "windows": "\uf17a " } },
+        { "type": "path", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b4", "foreground": "#00FF41", "background": "#001A33", "properties": { "style": "full", "folder_separator_icon": " ▸ " } },
+        { "type": "git", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b4", "foreground": "#00FFFF", "background": "#001A2E", "properties": { "branch_icon": "◈ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "rprompt",
-      "overflow": "hidden",
-      "segments": [
-        {
-          "type": "battery",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#00FFFF",
-          "background": "#001122",
-          "foreground_templates": [
-            "{{ if lt .Percentage 20 }}#FF0044{{ end }}",
-            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FF8800{{ end }}",
-            "{{ if ge .Percentage 50 }}#00FFFF{{ end }}"
-          ],
-          "template": " {{ if .Error }}N/A{{ else }}PWR:{{ .Percentage }}%{{ end }} "
-        },
-        {
-          "type": "time",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#00FF41",
-          "background": "#001122",
-          "properties": { "time_format": "15:04:05" },
-          "template": " ◈ {{ .CurrentDate | date .Format }} "
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#00FFFF", "template": "▸▸ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#00FFFF", "template": "▸▸ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -329,7 +154,7 @@ $THEMES = @{
     fantasy = @{
         Name        = "Fantasy: Dungeon Quest"
         Emoji       = "⚔"
-        Description = "Deep dungeon purple, arcane gold & emerald. Overlord / SAO / Re:Zero magic."
+        Description = "Deep dungeon purple, arcane gold & emerald."
         BgColor     = "#0D0520"
         FgColor     = "#E8D5FF"
         WTScheme    = "AnimeFantasy"
@@ -341,101 +166,23 @@ $THEMES = @{
   ██████╔╝╚██████╔╝██║ ╚████║╚██████╔╝███████╗╚██████╔╝██║ ╚████║    ╚██████╔╝╚██████╔╝███████╗███████║   ██║   
   ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝     ╚═══▀▀╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   
 '@
+        SubTitle    = "               ⚔ [ Enter the Dungeon — Quest Active ] ⚔"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "⚔ {{ .Shell }} | Dungeon: {{ .Folder }} | Quest Active ⚔",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFD700",
-          "background": "#2D1B69",
-          "template": " ⚔ HERO "
-        },
-        {
-          "type": "os",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#E8D5FF",
-          "background": "#1A0A3C",
-          "properties": { "windows": "\uf17a " }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFD700",
-          "background": "#3D1A78",
-          "properties": { "style": "folder", "folder_separator_icon": " ✦ " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#1A0A3C",
-          "background": "#00C853",
-          "foreground_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FFD700{{ end }}"],
-          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FF6600{{ end }}"],
-          "properties": { "branch_icon": "✦ ", "fetch_status": true }
-        },
-        {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0b0",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FFD700",
-          "background": "#8B0000",
-          "template": "{{ if gt .Code 0 }} ☠ {{ .Code }} {{ end }}",
-          "properties": { "always_enabled": false }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFD700", "background": "#2D1B69", "template": " ⚔ HERO " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFD700", "background": "#3D1A78", "properties": { "style": "folder", "folder_separator_icon": " ✦ " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#1A0A3C", "background": "#00C853", "properties": { "branch_icon": "✦ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "rprompt",
-      "overflow": "hidden",
-      "segments": [
-        {
-          "type": "battery",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FFD700",
-          "background": "#2D1B69",
-          "foreground_templates": [
-            "{{ if lt .Percentage 20 }}#FF0000{{ end }}",
-            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FFA500{{ end }}",
-            "{{ if ge .Percentage 50 }}#00C853{{ end }}"
-          ],
-          "template": " {{ if .Error }}N/A{{ else }}♥ MP: {{ .Percentage }}%{{ end }} "
-        },
-        {
-          "type": "time",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#E8D5FF",
-          "background": "#1A0A3C",
-          "properties": { "time_format": "15:04:05" },
-          "template": " ✦ {{ .CurrentDate | date .Format }} "
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#FFD700", "template": "⚔ ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#FFD700", "template": "⚔ ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -453,7 +200,7 @@ $THEMES = @{
     romcom = @{
         Name        = "Rom-Com: Kawaii Mode"
         Emoji       = "♡"
-        Description = "Deep pink hearts & sakura blossoms. Kaguya-sama / Toradora maximum sweetness."
+        Description = "Deep pink hearts & sakura blossoms."
         BgColor     = "#1A000D"
         FgColor     = "#FFB6C1"
         WTScheme    = "AnimeRomCom"
@@ -465,101 +212,23 @@ $THEMES = @{
   ██║  ██╗██║  ██║╚███╔███╔╝██║  ██║██║██║    ██║ ╚═╝ ██║╚██████╔╝██████╔╝███████╗
   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝╚═╝    ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝
 '@
+        SubTitle    = "                   ♡ [ Doki Doki Terminal — Love Ready ] ♡"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "♡ {{ .Shell }} ♡ {{ .Folder }} ♡ Sugoi!!",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#FF1493",
-          "template": " ♡ KAWAII "
-        },
-        {
-          "type": "os",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FF1493",
-          "background": "#FFB6C1",
-          "properties": { "windows": "\uf17a " }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#4A0028",
-          "background": "#FF85A1",
-          "properties": { "style": "folder", "folder_separator_icon": " ✿ " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#C71585",
-          "foreground_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FFD700{{ end }}"],
-          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FF4500{{ end }}"],
-          "properties": { "branch_icon": "♡ ", "fetch_status": true }
-        },
-        {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0b0",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FFFFFF",
-          "background": "#8B0000",
-          "template": "{{ if gt .Code 0 }} ✗ {{ .Code }} {{ end }}",
-          "properties": { "always_enabled": false }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFFFF", "background": "#FF1493", "template": " ♡ KAWAII " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#4A0028", "background": "#FF85A1", "properties": { "style": "folder", "folder_separator_icon": " ✿ " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#C71585", "properties": { "branch_icon": "♡ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "rprompt",
-      "overflow": "hidden",
-      "segments": [
-        {
-          "type": "battery",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FF1493",
-          "background": "#FFF0F5",
-          "foreground_templates": [
-            "{{ if lt .Percentage 20 }}#FF0000{{ end }}",
-            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FF8C00{{ end }}",
-            "{{ if ge .Percentage 50 }}#FF1493{{ end }}"
-          ],
-          "template": " {{ if .Error }}N/A{{ else }}♡ {{ .Percentage }}%{{ end }} "
-        },
-        {
-          "type": "time",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FF1493",
-          "background": "#FFF0F5",
-          "properties": { "time_format": "15:04" },
-          "template": " ✿ {{ .CurrentDate | date .Format }} "
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#FF69B4", "template": "♡ ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#FF69B4", "template": "♡ ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -577,7 +246,7 @@ $THEMES = @{
     sliceoflife = @{
         Name        = "Slice of Life: Cozy Café"
         Emoji       = "☕"
-        Description = "Warm sage greens & coffee browns. K-On! / Barakamon / Yotsuba maximum chill."
+        Description = "Warm sage greens & coffee browns."
         BgColor     = "#0D0A07"
         FgColor     = "#FFFACD"
         WTScheme    = "AnimeSliceOfLife"
@@ -589,101 +258,23 @@ $THEMES = @{
   ╚██████╗╚██████╔╝███████╗   ██║       ╚██████╗██║  ██║██║     ██║     
    ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝        ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝     
 '@
+        SubTitle    = "                   ☕ [ Cozy Cafe — Just Vibing ] ☕"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "☕ {{ .Shell }} ~ {{ .Folder }} ~ Just vibing...",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFACD",
-          "background": "#6F4E37",
-          "template": " ☕ COZY "
-        },
-        {
-          "type": "os",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFACD",
-          "background": "#5C4033",
-          "properties": { "windows": "\uf17a " }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#3E2723",
-          "background": "#87A96B",
-          "properties": { "style": "folder", "folder_separator_icon": " ♪ " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFACD",
-          "background": "#4A7C59",
-          "foreground_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FFD700{{ end }}"],
-          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#8B6914{{ end }}"],
-          "properties": { "branch_icon": "♪ ", "fetch_status": true }
-        },
-        {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0b0",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FFFACD",
-          "background": "#8B2500",
-          "template": "{{ if gt .Code 0 }} ✗ {{ .Code }} {{ end }}",
-          "properties": { "always_enabled": false }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFACD", "background": "#6F4E37", "template": " ☕ COZY " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#3E2723", "background": "#87A96B", "properties": { "style": "folder", "folder_separator_icon": " ♪ " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFACD", "background": "#4A7C59", "properties": { "branch_icon": "♪ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "rprompt",
-      "overflow": "hidden",
-      "segments": [
-        {
-          "type": "battery",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#6F4E37",
-          "background": "#FFFACD",
-          "foreground_templates": [
-            "{{ if lt .Percentage 20 }}#CC0000{{ end }}",
-            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#B8860B{{ end }}",
-            "{{ if ge .Percentage 50 }}#4A7C59{{ end }}"
-          ],
-          "template": " {{ if .Error }}N/A{{ else }}☕ {{ .Percentage }}%{{ end }} "
-        },
-        {
-          "type": "time",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#3E2723",
-          "background": "#FFE4B5",
-          "properties": { "time_format": "15:04" },
-          "template": " ☕ {{ .CurrentDate | date .Format }} "
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#87A96B", "template": "~ ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#87A96B", "template": "~ ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -701,7 +292,7 @@ $THEMES = @{
     minimal = @{
         Name        = "Minimal: Zen / Wabi-Sabi"
         Emoji       = "·"
-        Description = "Black, white & one red accent. Japanese minimalism. 侘び寂び."
+        Description = "Black, white & one red accent."
         BgColor     = "#0F0F0F"
         FgColor     = "#E8E8E8"
         WTScheme    = "AnimeMinimal"
@@ -713,67 +304,22 @@ $THEMES = @{
   ██║ ╚═╝ ██║██║██║ ╚████║██║██║ ╚═╝ ██║██║  ██║███████╗
   ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝
 '@
+        SubTitle    = "                [ ZEN: ACTIVE ] [ LESS IS MORE ] ·"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "{{ .Folder }}",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "path",
-          "style": "diamond",
-          "leading_diamond": "[",
-          "trailing_diamond": "]",
-          "foreground": "#E8E8E8",
-          "background": "transparent",
-          "properties": {
-            "style": "folder",
-            "folder_separator_icon": "/",
-            "home_icon": "~"
-          }
-        },
-        { "type": "text", "style": "plain", "foreground": "#333333", "template": " " },
-        {
-          "type": "git",
-          "style": "plain",
-          "foreground": "#CC0000",
-          "foreground_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FF4444{{ end }}"],
-          "properties": { "branch_icon": "", "fetch_status": true }
-        }
+        { "type": "path", "style": "diamond", "leading_diamond": "[", "trailing_diamond": "]", "foreground": "#E8E8E8", "background": "transparent", "properties": { "style": "folder", "folder_separator_icon": "/" } },
+        { "type": "git", "style": "plain", "foreground": "#CC0000", "properties": { "branch_icon": "", "fetch_status": true } }
       ]
     },
-    {
-      "type": "rprompt",
-      "overflow": "hidden",
-      "segments": [
-        {
-          "type": "time",
-          "style": "plain",
-          "foreground": "#555555",
-          "properties": { "time_format": "15:04" },
-          "template": "{{ .CurrentDate | date .Format }}"
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "type": "exit",
-          "style": "plain",
-          "foreground": "#CC0000",
-          "foreground_templates": ["{{ if eq .Code 0 }}#E8E8E8{{ end }}"],
-          "template": "❯ ",
-          "properties": { "always_enabled": true }
-        }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "exit", "style": "plain", "foreground": "#CC0000", "foreground_templates": ["{{ if eq .Code 0 }}#E8E8E8{{ end }}"], "template": "❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -791,7 +337,7 @@ $THEMES = @{
     mecha = @{
         Name        = "Mecha: NERV / EVA Unit-01"
         Emoji       = "▲"
-        Description = "Purple/orange/green EVA colors. NERV MAGI system. Evangelion terminal."
+        Description = "Purple/orange/green EVA colors."
         BgColor     = "#080808"
         FgColor     = "#00FF00"
         WTScheme    = "AnimeMecha"
@@ -799,105 +345,27 @@ $THEMES = @{
   ███╗   ███╗███████╗ ██████╗██╗  ██╗ █████╗ 
   ████╗ ████║██╔════╝██╔════╝██║  ██║██╔══██╗
   ██╔████╔██║█████╗  ██║     ███████║███████║
-  ██║╚██╔╝██║██╔══╝  ██║     ██╔══██║██╔══██║
+  ██║╚██╔╝██║██╔══╝  ██║     ██╔══██║██╔══██╗
   ██║ ╚═╝ ██║███████╗╚██████╗██║  ██║██║  ██║
   ╚═╝     ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝
 '@
+        SubTitle    = "          ▲ [ MAGI SYSTEM: ONLINE ] [ SYNC: 100% ] ▲"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "NERV // MAGI SYSTEM // {{ .Shell }} // NODE: {{ .Folder }} // SYNC: ACTIVE",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FF4500",
-          "background": "#1A0000",
-          "template": " ▲ NERV "
-        },
-        {
-          "type": "os",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#00FF00",
-          "background": "#0A0A0A",
-          "properties": { "windows": "\uf17a " }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FF4500",
-          "background": "#150000",
-          "properties": { "style": "folder", "folder_separator_icon": " // " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#00FF00",
-          "background": "#0A0A0A",
-          "foreground_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#FF4500{{ end }}"],
-          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#1A0000{{ end }}"],
-          "properties": { "branch_icon": "▲ ", "fetch_status": true }
-        },
-        {
-          "type": "exit",
-          "style": "diamond",
-          "leading_diamond": "\ue0b0",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FF0000",
-          "background": "#2A0000",
-          "template": "{{ if gt .Code 0 }} ALERT:{{ .Code }} {{ end }}",
-          "properties": { "always_enabled": false }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FF4500", "background": "#1A0000", "template": " ▲ NERV " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FF4500", "background": "#150000", "properties": { "style": "folder", "folder_separator_icon": " // " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#4B0082", "properties": { "branch_icon": "▲ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "rprompt",
-      "overflow": "hidden",
-      "segments": [
-        {
-          "type": "battery",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#00FF00",
-          "background": "#0A0A0A",
-          "foreground_templates": [
-            "{{ if lt .Percentage 20 }}#FF0000{{ end }}",
-            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FF4500{{ end }}",
-            "{{ if ge .Percentage 50 }}#00FF00{{ end }}"
-          ],
-          "template": " {{ if .Error }}N/A{{ else }}SYNC:{{ .Percentage }}%{{ end }} "
-        },
-        {
-          "type": "time",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "#FF4500",
-          "background": "#0A0A0A",
-          "properties": { "time_format": "15:04:05" },
-          "template": " ▲ {{ .CurrentDate | date .Format }} "
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#FF4500", "template": "▲▲ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#00FF00", "template": "▲ ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -905,17 +373,17 @@ $THEMES = @{
 '@
         WTColors = @{
             background="#080808"; foreground="#00FF00"; cursorColor="#FF4500"
-            black="#080808"; blue="#4B0082"; brightBlack="#1A0000"; brightBlue="#800080"
-            brightCyan="#00FFFF"; brightGreen="#00FF00"; brightPurple="#9400D3"; brightRed="#FF4500"
-            brightWhite="#E0E0E0"; brightYellow="#FFD700"; cyan="#00AAAA"; green="#00CC00"
-            purple="#6B0FBB"; red="#CC3300"; white="#CCCCCC"; yellow="#CCAA00"
+            black="#080808"; blue="#4B0082"; brightBlack="#1A1A1A"; brightBlue="#8A2BE2"
+            brightCyan="#00FFFF"; brightGreen="#00FF00"; brightPurple="#FF00FF"; brightRed="#FF4500"
+            brightWhite="#FFFFFF"; brightYellow="#FFFF00"; cyan="#008080"; green="#00FF00"
+            purple="#800080"; red="#FF0000"; white="#C0C0C0"; yellow="#FFA500"
         }
     }
 
     naruto = @{
         Name        = "Shinobi: Hidden Leaf"
         Emoji       = "🍥"
-        Description = "Will of Fire. Orange fire, shinobi black & rasengan blue. Believe it!"
+        Description = "Will of Fire. Orange fire & rasengan blue."
         BgColor     = "#0F0F0F"
         FgColor     = "#FF6600"
         WTScheme    = "AnimeNaruto"
@@ -927,59 +395,23 @@ $THEMES = @{
   ██║ ╚████║██║  ██║██║  ██║╚██████╔╝   ██║   ╚██████╔╝
   ╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ 
 '@
+        SubTitle    = "                   🍥 [ WILL OF FIRE ] [ BELIEVE IT! ] 🍥"
         AsciiArt    = ""
         OmpJson = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "console_title_template": "🍥 {{ .Shell }} :: {{ .Folder }} | WILL OF FIRE 🍥",
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#FF6600",
-          "template": " 🍥 HOKAGE "
-        },
-        {
-          "type": "os",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FF6600",
-          "background": "#1A1A1A",
-          "properties": { "windows": "\uf17a " }
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#0066FF",
-          "properties": { "style": "folder", "folder_separator_icon": " 🍥 " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#FF6600",
-          "properties": { "branch_icon": "🍥 ", "fetch_status": true }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFFFF", "background": "#FF6600", "template": " 🍥 HOKAGE " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#0066FF", "properties": { "style": "folder", "folder_separator_icon": " 🍥 " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#FF6600", "properties": { "branch_icon": "🍥 ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#FF6600", "template": "🍥 ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#FF6600", "template": "🍥 ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -997,7 +429,7 @@ $THEMES = @{
     onepiece = @{
         Name        = "Pirate: Grand Line"
         Emoji       = "👒"
-        Description = "The One Piece is real! Pirate red, straw-hat yellow & ocean blue."
+        Description = "Pirate red & straw-hat yellow."
         BgColor     = "#000510"
         FgColor     = "#FF0000"
         WTScheme    = "AnimeOnePiece"
@@ -1009,6 +441,7 @@ $THEMES = @{
   ╚██████╔╝██║ ╚████║███████╗    ██║     ██║███████╗╚██████╗███████╗
    ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝     ╚═╝╚══════╝ ╚═════╝╚══════╝
 '@
+        SubTitle    = "           👒 [ GRAND LINE ] [ KING OF THE PIRATES ] 👒"
         AsciiArt    = ""
         OmpJson = @'
 {
@@ -1019,40 +452,12 @@ $THEMES = @{
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#FF0000",
-          "template": " 👒 NAKAMA "
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#000000",
-          "background": "#FFCC00",
-          "properties": { "style": "folder", "folder_separator_icon": " ☠ " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#0000FF",
-          "properties": { "branch_icon": "⚓ ", "fetch_status": true }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFFFF", "background": "#FF0000", "template": " 👒 NAKAMA " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#000000", "background": "#FFCC00", "properties": { "style": "folder", "folder_separator_icon": " ☠ " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#0000FF", "properties": { "branch_icon": "⚓ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#FFCC00", "template": "👒 ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#FFCC00", "template": "👒 ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -1070,7 +475,7 @@ $THEMES = @{
     jujutsu = @{
         Name        = "Cursed: Domain Expansion"
         Emoji       = "👹"
-        Description = "Dark navy & crimson curse energy. Jujutsu Kaisen / Gojo vibes."
+        Description = "Dark navy & crimson curse energy."
         BgColor     = "#0A0A12"
         FgColor     = "#E94560"
         WTScheme    = "AnimeJujutsu"
@@ -1082,6 +487,7 @@ $THEMES = @{
    ╚█████╔╝██║  ██╗
     ╚════╝ ╚═╝  ╚═╝
 '@
+        SubTitle    = "               👹 [ DOMAIN EXPANSION — ENERGY READY ] 👹"
         AsciiArt    = ""
         OmpJson = @'
 {
@@ -1092,40 +498,12 @@ $THEMES = @{
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#E94560",
-          "template": " 👹 SORCERER "
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#E94560",
-          "background": "#16213E",
-          "properties": { "style": "folder", "folder_separator_icon": " ☠ " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#0F3460",
-          "properties": { "branch_icon": "👹 ", "fetch_status": true }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFFFF", "background": "#E94560", "template": " 👹 SORCERER " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#E94560", "background": "#16213E", "properties": { "style": "folder", "folder_separator_icon": " ☠ " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#0F3460", "properties": { "branch_icon": "👹 ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#E94560", "template": "👹 ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#E94560", "template": "👹 ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -1143,7 +521,7 @@ $THEMES = @{
     demonslayer = @{
         Name        = "Slayer: Hashira"
         Emoji       = "⚔️"
-        Description = "Water breathing green & nichirin pink. Demon Slayer / Tanjiro style."
+        Description = "Water breathing green & nichirin pink."
         BgColor     = "#081C15"
         FgColor     = "#16A085"
         WTScheme    = "AnimeDemonSlayer"
@@ -1155,6 +533,7 @@ $THEMES = @{
   ██████╔╝███████╗██║ ╚═╝ ██║╚██████╔╝██║ ╚████║    ███████║███████╗██║  ██║   ██║   ███████╗██║  ██║
   ╚═════╝ ╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
 '@
+        SubTitle    = "                  ⚔️ [ HASHIRA STYLE — SLAYER READY ] ⚔️"
         AsciiArt    = ""
         OmpJson = @'
 {
@@ -1165,40 +544,12 @@ $THEMES = @{
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#16A085",
-          "template": " ⚔️ SLAYER "
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#16A085",
-          "background": "#D4AC0D",
-          "properties": { "style": "folder", "folder_separator_icon": " ⚔️ " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#F1948A",
-          "properties": { "branch_icon": "⚔️ ", "fetch_status": true }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFFFF", "background": "#16A085", "template": " ⚔️ SLAYER " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#16A085", "background": "#D4AC0D", "properties": { "style": "folder", "folder_separator_icon": " ⚔️ " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#F1948A", "properties": { "branch_icon": "⚔️ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#16A085", "template": "⚔️ ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#16A085", "template": "⚔️ ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -1216,7 +567,7 @@ $THEMES = @{
     sololeveling = @{
         Name        = "Monarch: Shadow"
         Emoji       = "🕶️"
-        Description = "Deep shadow black & mana neon blue. Solo Leveling / Arise!"
+        Description = "Deep shadow black & mana neon blue."
         BgColor     = "#000000"
         FgColor     = "#3498DB"
         WTScheme    = "AnimeSoloLeveling"
@@ -1226,8 +577,9 @@ $THEMES = @{
   ███████╗██║   ██║██║     ██║   ██║    ██║     █████╗  ██║   ██║█████╗  ██║     ██║██╔██╗ ██║██║  ███╗
   ╚════██║██║   ██║██║     ██║   ██║    ██║     ██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║     ██║██║╚██╗██║██║   ██║
   ███████║╚██████╔╝███████╗╚██████╔╝    ███████╗███████╗ ╚████╔╝ ███████╗███████╗██║██║ ╚████║╚██████╔╝
-  ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝     ╚══════╝╚══════╝  ╚═══╝  ╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ 
+  ╚══════╝ ╚═════╝ ╚══════╝╚═════╝     ╚══════╝╚══════╝  ╚═══╝  ╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ 
 '@
+        SubTitle    = "                  🕶️ [ SHADOW MONARCH — ARISE READY ] 🕶️"
         AsciiArt    = ""
         OmpJson = @'
 {
@@ -1238,40 +590,12 @@ $THEMES = @{
       "alignment": "left",
       "newline": true,
       "segments": [
-        {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#000000",
-          "template": " 🕶️ ARISE "
-        },
-        {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#000000",
-          "background": "#3498DB",
-          "properties": { "style": "folder", "folder_separator_icon": " 🕶️ " }
-        },
-        {
-          "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b0",
-          "foreground": "#FFFFFF",
-          "background": "#9B59B6",
-          "properties": { "branch_icon": "🕶️ ", "fetch_status": true }
-        }
+        { "type": "text", "style": "diamond", "leading_diamond": "\ue0b6", "trailing_diamond": "\ue0b0", "foreground": "#FFFFFF", "background": "#000000", "template": " 🕶️ ARISE " },
+        { "type": "path", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#000000", "background": "#3498DB", "properties": { "style": "folder", "folder_separator_icon": " 🕶️ " } },
+        { "type": "git", "style": "powerline", "powerline_symbol": "\ue0b0", "foreground": "#FFFFFF", "background": "#9B59B6", "properties": { "branch_icon": "🕶️ ", "fetch_status": true } }
       ]
     },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        { "type": "text", "style": "plain", "foreground": "#3498DB", "template": "🕶️ ❯ " }
-      ]
-    }
+    { "type": "prompt", "alignment": "left", "segments": [ { "type": "text", "style": "plain", "foreground": "#3498DB", "template": "🕶️ ❯ " } ] }
   ],
   "final_space": true,
   "version": 2
@@ -1288,245 +612,74 @@ $THEMES = @{
 }
 
 # ═══════════════════════════════════════════════════════════════════
-#  HELPERS
+#  CORE FUNCTIONS
 # ═══════════════════════════════════════════════════════════════════
-
-function Test-Admin {
-    $identity  = [Security.Principal.WindowsIdentity]::GetCurrent()
-    $principal = [Security.Principal.WindowsPrincipal]$identity
-    return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-}
-
-function Install-OhMyPosh {
-    Write-Step "Checking Oh-My-Posh..."
-    if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
-        Write-OK "Oh-My-Posh already installed."
-        return
-    }
-    Write-Step "Installing Oh-My-Posh via winget..."
-    try {
-        winget install JanDeDobbeleer.OhMyPosh -s winget --accept-package-agreements --accept-source-agreements -e | Out-Null
-        Write-OK "Oh-My-Posh installed!"
-    } catch {
-        Write-Fail "winget failed. Trying manual install..."
-        Set-ExecutionPolicy Bypass -Scope Process -Force
-        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
-    }
-}
-
-function Install-Fastfetch {
-    Write-Step "Checking for Fastfetch (system info tool)..."
-    if (Get-Command fastfetch -ErrorAction SilentlyContinue) {
-        Write-OK "Fastfetch already installed."
-        return
-    }
-    Write-Step "Installing Fastfetch via winget..."
-    try {
-        winget install fastfetch -s winget --accept-package-agreements --accept-source-agreements -e | Out-Null
-        Write-OK "Fastfetch installed!"
-    } catch {
-        Write-Color "  ⚠ " "Yellow" -NoNewLine
-        Write-Color "Fastfetch install failed. You can install it manually for the full look." "Yellow"
-    }
-}
-
-function Install-NerdFont {
-    Write-Step "Installing $FONT_NAME Nerd Font (this may take a moment)..."
-    try {
-        oh-my-posh font install $FONT_NAME 2>&1 | Out-Null
-        Write-OK "Nerd Font installed! (Set it in Windows Terminal: Settings → Profiles → Font)"
-    } catch {
-        Write-Color "  ⚠ " "Yellow" -NoNewLine
-        Write-Color "Font install failed. Download manually from: https://www.nerdfonts.com/font-downloads" "Yellow"
-    }
-}
-
-function Get-WTSettingsPath {
-    $paths = @(
-        "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json",
-        "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json",
-        "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
-    )
-    foreach ($p in $paths) { if (Test-Path $p) { return $p } }
-    return $null
-}
-
 function Update-WTSettings {
     param([string]$SchemeName, [hashtable]$Colors)
-
-    $settingsPath = Get-WTSettingsPath
-    if (-not $settingsPath) {
-        Write-Color "  ⚠ " "Yellow" -NoNewLine
-        Write-Color "Windows Terminal settings not found. Apply color scheme manually." "Yellow"
-        return
-    }
-
-    Write-Step "Updating Windows Terminal color scheme..."
+    $settingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    if (-not (Test-Path $settingsPath)) { return }
     try {
         $json = Get-Content $settingsPath -Raw | ConvertFrom-Json
-
-        # Build scheme object
-        $scheme = [ordered]@{ name = $SchemeName }
-        foreach ($k in $Colors.Keys) { $scheme[$k] = $Colors[$k] }
-        $schemeObj = [PSCustomObject]$scheme
-
-        # Add or replace scheme
-        if (-not $json.schemes) { $json | Add-Member -NotePropertyName "schemes" -NotePropertyValue @() }
-        $existingIdx = -1
-        for ($i = 0; $i -lt $json.schemes.Count; $i++) {
-            if ($json.schemes[$i].name -eq $SchemeName) { $existingIdx = $i; break }
-        }
-        if ($existingIdx -ge 0) {
-            $json.schemes[$existingIdx] = $schemeObj
-        } else {
-            $json.schemes += $schemeObj
-        }
-
-        # Apply scheme to default profile
-        if ($json.profiles.defaults) {
-            $json.profiles.defaults | Add-Member -NotePropertyName "colorScheme" -NotePropertyValue $SchemeName -Force
-            $json.profiles.defaults | Add-Member -NotePropertyName "font" -NotePropertyValue ([PSCustomObject]@{ face = "CaskaydiaCove Nerd Font" }) -Force
-            
-            # Add -nologo to hide the copyright banner
-            $currentCmd = $json.profiles.defaults.commandline
-            if ($null -eq $currentCmd) { $currentCmd = "powershell.exe" }
-            if ($currentCmd -notmatch "-nologo") {
-                $json.profiles.defaults | Add-Member -NotePropertyName "commandline" -NotePropertyValue "$currentCmd -nologo" -Force
-            }
-        }
-
-        $json | ConvertTo-Json -Depth 20 | Set-Content $settingsPath -Encoding UTF8
-        Write-OK "Windows Terminal updated with $SchemeName scheme and -nologo flag!"
-    } catch {
-        Write-Color "  ⚠ " "Yellow" -NoNewLine
-        Write-Color "Could not auto-update settings: $_" "Yellow"
-    }
+        if (-not $json.schemes) { $json | Add-Member -MemberType NoteProperty -Name "schemes" -Value @() }
+        $existing = $json.schemes | Where-Object { $_.name -eq $SchemeName }
+        if ($existing) { $json.schemes = $json.schemes | Where-Object { $_.name -ne $SchemeName } }
+        $newScheme = @{ name = $SchemeName }
+        $Colors.Keys | ForEach-Object { $newScheme[$_] = $Colors[$_] }
+        $json.schemes += $newScheme
+        if ($json.profiles.defaults) { $json.profiles.defaults.colorScheme = $SchemeName }
+        $json | ConvertTo-Json -Depth 10 | Set-Content $settingsPath
+    } catch {}
 }
 
 function Set-OmpTheme {
-    param([string]$ThemeKey, [PSCustomObject]$ThemeDef)
-
-    # Determine themes path
-    if (-not $env:POSH_THEMES_PATH) {
-        $env:POSH_THEMES_PATH = "$env:LOCALAPPDATA\Programs\oh-my-posh\themes"
-    }
-    $themesDir = $env:POSH_THEMES_PATH
-    if (-not (Test-Path $themesDir)) { New-Item -ItemType Directory -Path $themesDir -Force | Out-Null }
-
-    $outFile = Join-Path $themesDir "anime-$ThemeKey.omp.json"
-    Write-Step "Writing theme to: $outFile"
-    $ThemeDef.OmpJson | Set-Content $outFile -Encoding UTF8
-    Write-OK "Theme file saved."
-    return $outFile
+    param([string]$ThemeKey, [hashtable]$ThemeDef)
+    $path = Join-Path $HOME ".anime-terminal-$ThemeKey.omp.json"
+    $ThemeDef.OmpJson | Set-Content $path
+    return $path
 }
 
 function Update-PSProfile {
-    param([string]$ThemeFile, [string]$AsciiArt, [string]$BigName)
-
+    param([string]$ThemeFile, [string]$BigName, [string]$SubTitle)
     Write-Step "Updating PowerShell profile..."
-
-    # Ensure profile directory exists
-    $profileDir = Split-Path $PROFILE
-    if (-not (Test-Path $profileDir)) { New-Item -ItemType Directory -Path $profileDir -Force | Out-Null }
-    
-    # Ensure profile file exists
-    if (-not (Test-Path $PROFILE)) {
-        New-Item -ItemType File -Path $PROFILE -Force | Out-Null
-    }
-
-    $profileContent = Get-Content $PROFILE -Raw -ErrorAction SilentlyContinue
-    if ($null -eq $profileContent) { $profileContent = "" }
-
-    $ompLine = "oh-my-posh init pwsh --config `"$ThemeFile`" | Invoke-Expression"
-    $fetchLine = "if (Get-Command fastfetch -ErrorAction SilentlyContinue) { fastfetch } elseif (Get-Command winfetch -ErrorAction SilentlyContinue) { winfetch }"
-    $marker  = "# [ANIME-TERMINAL]"
+    $profilePath = $PROFILE
+    if (-not (Test-Path (Split-Path $profilePath))) { New-Item -Path (Split-Path $profilePath) -ItemType Directory -Force }
+    if (-not (Test-Path $profilePath)) { New-Item -Path $profilePath -ItemType File -Force }
+    $marker = "# [ANIME-TERMINAL]"
     $endMarker = "# [/ANIME-TERMINAL]"
-
-    # Main Anime Terminal Banner
-    $mainBanner = @'
-
-  █████╗ ███╗   ██╗██╗███╗   ███╗███████╗    ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗
- ██╔══██╗████╗  ██║██║████╗ ████║██╔════╝    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║
- ███████║██╔██╗ ██║██║██╔████╔██║█████╗         ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║
- ██╔══██║██║╚██╗██║██║██║╚██╔╝██║██╔══╝         ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║
- ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║███████╗       ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
- ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝╚══════╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
-
-'@
-
-    # Build the block using an array to avoid here-string nesting issues
+    $content = Get-Content $profilePath -Raw
+    if ($content -match "(?s)$([regex]::Escape($marker)).*?$([regex]::Escape($endMarker))") {
+        $content = $content -replace "(?s)$([regex]::Escape($marker)).*?$([regex]::Escape($endMarker))", ""
+    }
+    $ompLine = "oh-my-posh init pwsh --config '$ThemeFile' | Invoke-Expression"
+    $fetchLine = "if (Get-Command fastfetch -ErrorAction SilentlyContinue) { fastfetch } elseif (Get-Command winfetch -ErrorAction SilentlyContinue) { winfetch }"
     $blockLines = @(
         $marker,
-        "# Generated by anime-terminal installer — https://github.com/Prithibi17/Windows-Terminal-26",
         "if (`$Host.Name -eq 'ConsoleHost') { try { [console]::Clear() } catch {} } else { Clear-Host }",
         "`$themeBanner = @'",
         $BigName,
         "'@",
         "Write-Host `$themeBanner -ForegroundColor Magenta",
+        "Write-Host '$SubTitle' -ForegroundColor Cyan",
         $ompLine,
         $fetchLine,
         $endMarker
     )
     $block = $blockLines -join "`n"
-
-    # ROBUST CLEANUP: Remove ALL previous instances of the block
-    $escMarker = [regex]::Escape($marker)
-    $escEnd    = [regex]::Escape($endMarker)
-    $cleanContent = $profileContent -replace "(?s)$escMarker.*?$escEnd", ""
-    $cleanContent = $cleanContent.Trim()
-
-    # Write the new block
-    if ($cleanContent.Length -gt 0) {
-        $cleanContent + "`n`n" + $block | Set-Content $PROFILE -Encoding UTF8 -Force
-    } else {
-        $block | Set-Content $PROFILE -Encoding UTF8 -Force
-    }
-
-    Write-OK "PowerShell profile updated and cleaned at: $PROFILE"
+    Add-Content -Path $profilePath -Value "`n$block"
 }
-
-# ═══════════════════════════════════════════════════════════════════
-#  MENU
-# ═══════════════════════════════════════════════════════════════════
 
 function Show-Menu {
     Clear-Host
-    $menuBanner = @"
-
-  █████╗ ███╗   ██╗██╗███╗   ███╗███████╗    ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗
- ██╔══██╗████╗  ██║██║████╗ ████║██╔════╝    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║
- ███████║██╔██╗ ██║██║██╔████╔██║█████╗         ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║
- ██╔══██║██║╚██╗██║██║██║╚██╔╝██║██╔══╝         ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║
- ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║███████╗       ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
- ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝╚══════╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
-
-"@
-    Write-Color $menuBanner "Magenta"
-
-    Write-Color "  CHOOSE YOUR ANIME TERMINAL THEME:" "Yellow"
+    Write-Color "  ✨ WINDOWS-TERMINAL-26 ✨" "Magenta"
     Write-Color "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" "DarkGray"
-    Write-Color ""
-
     $keys = @("dragonballz","scifi","fantasy","romcom","sliceoflife","minimal","mecha","naruto","onepiece","jujutsu","demonslayer","sololeveling")
-    $nums = @("1","2","3","4","5","6","7","8","9","10","11","12")
-
     for ($i = 0; $i -lt $keys.Length; $i++) {
         $t = $THEMES[$keys[$i]]
-        Write-Color "  [$($nums[$i])] " "Cyan" -NoNewLine
-        Write-Color "$($t.Emoji) " "Yellow" -NoNewLine
-        Write-Color "$($t.Name)" "White" -NoNewLine
-        Write-Color " — $($t.Description)" "DarkGray"
+        Write-Color "  $($i+1). $($t.Emoji) $($t.Name)" "Cyan" -NoNewLine
+        Write-Color " - $($t.Description)" "Gray"
     }
-
-    Write-Color ""
-    Write-Color "  [Q] Quit without installing" "DarkGray"
-    Write-Color ""
     Write-Color "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" "DarkGray"
-    Write-Color ""
-
-    $choice = Read-Host "  Enter number (1-7)"
-    Write-Color ""
-
+    $choice = Read-Host "  Select Theme (1-12)"
     switch ($choice) {
         "1" { return "dragonballz" }
         "2" { return "scifi" }
@@ -1545,82 +698,30 @@ function Show-Menu {
 }
 
 # ═══════════════════════════════════════════════════════════════════
-#  UNINSTALL
+#  MAIN EXECUTION
 # ═══════════════════════════════════════════════════════════════════
-
-function Invoke-Uninstall {
-    Write-Color "`n  Removing anime-terminal themes..." "Yellow"
-    if (Test-Path $PROFILE) {
-        $content = Get-Content $PROFILE -Raw
+if ($Uninstall) {
+    Write-Step "Uninstalling..."
+    $profilePath = $PROFILE
+    if (Test-Path $profilePath) {
+        $content = Get-Content $profilePath -Raw
         $content = $content -replace "(?s)# \[ANIME-TERMINAL\].*?# \[/ANIME-TERMINAL\]", ""
-        $content.Trim() | Set-Content $PROFILE -Encoding UTF8
-        Write-OK "Removed OMP config from PowerShell profile."
+        $content | Set-Content $profilePath
     }
-    if ($env:POSH_THEMES_PATH) {
-        Get-ChildItem "$env:POSH_THEMES_PATH\anime-*.omp.json" -ErrorAction SilentlyContinue | Remove-Item -Force
-        Write-OK "Removed anime theme JSON files."
-    }
-    Write-Color "`n  Done! Restart your terminal." "Green"
+    Write-OK "Uninstalled. Restart terminal."
+    exit
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  MAIN
-# ═══════════════════════════════════════════════════════════════════
-
-if ($Uninstall) { Invoke-Uninstall; exit 0 }
-
-# Pick theme
-$selectedKey = $Theme
-if (-not $selectedKey) { $selectedKey = Show-Menu }
-if (-not $selectedKey -or -not $THEMES.ContainsKey($selectedKey)) {
-    Write-Color "  Cancelled. No changes made." "DarkGray"
-    exit 0
-}
-
+$selectedKey = if ($Theme) { $Theme } else { Show-Menu }
+if (-not $selectedKey) { Write-Fail "Invalid choice."; exit }
 $selectedTheme = $THEMES[$selectedKey]
 
-# Show theme banner
-Clear-Host
-Write-Color ""
-Write-Banner $selectedTheme.AsciiArt "Cyan"
-Write-Color ""
-Write-Color "  Installing: $($selectedTheme.Emoji) $($selectedTheme.Name)" "Yellow"
-Write-Color "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" "DarkGray"
-Write-Color ""
+Write-Step "Installing theme: $($selectedTheme.Name)..."
+if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) { Write-Step "Installing Oh-My-Posh..."; winget install JanDeDobbeleer.OhMyPosh -e }
+if (-not (Get-Command fastfetch -ErrorAction SilentlyContinue)) { Write-Step "Installing Fastfetch..."; winget install fastfetch -e }
 
-# Step 1 — Oh-My-Posh
-Install-OhMyPosh
-
-# Step 2 — Fastfetch (System Info)
-Install-Fastfetch
-
-# Step 3 — Nerd Font
-Install-NerdFont
-
-# Step 3 — Write theme JSON
 $themeFile = Set-OmpTheme -ThemeKey $selectedKey -ThemeDef $selectedTheme
-
-# Step 4 — Update PS Profile
-Update-PSProfile -ThemeFile $themeFile -AsciiArt $selectedTheme.AsciiArt -BigName $selectedTheme.BigName
-
-# Step 5 — Windows Terminal colors
+Update-PSProfile -ThemeFile $themeFile -BigName $selectedTheme.BigName -SubTitle $selectedTheme.SubTitle
 Update-WTSettings -SchemeName $selectedTheme.WTScheme -Colors $selectedTheme.WTColors
 
-# Done!
-Write-Color ""
-Write-Color "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" "DarkGray"
-Write-Color ""
-Write-Color "  ✔  $($selectedTheme.Emoji) $($selectedTheme.Name) installed!" "Green"
-Write-Color ""
-Write-Color "  NEXT STEPS:" "Yellow"
-Write-Color "  1. Restart Windows Terminal (or run: . `$PROFILE)" "White"
-Write-Color "  2. In Settings → Profiles → Appearance → Font:" "White"
-Write-Color "     Set font to: CaskaydiaCove Nerd Font  (or Meslo LGM NF)" "Cyan"
-Write-Color "  3. The color scheme '$($selectedTheme.WTScheme)' has been auto-applied." "White"
-Write-Color ""
-Write-Color "  Switch themes anytime:" "Yellow"
-Write-Color "  irm $REPO_URL/install.ps1 | iex" "Cyan"
-Write-Color ""
-Write-Color "  To uninstall:" "Yellow"
-Write-Color "  irm $REPO_URL/install.ps1 -OutFile i.ps1; .\i.ps1 -Uninstall" "Cyan"
-Write-Color ""
+Write-OK "Installation complete! Restart Windows Terminal to see the magic."
