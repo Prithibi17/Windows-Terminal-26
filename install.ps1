@@ -728,14 +728,15 @@ function Install-App {
             Write-Step "Installing $Name via Winget..."
             & "winget.exe" install $PackageId -e --accept-package-agreements --accept-source-agreements
         } elseif ($Name -eq "Oh-My-Posh") {
-            Write-Step "Winget missing. Downloading Oh-My-Posh official installer..."
-            $installScript = (New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1')
-            Invoke-Expression $installScript
-            # Force refresh of path for current session
+            Write-Step "Winget missing. Attempting direct web install for Oh-My-Posh..."
+            Set-ExecutionPolicy Bypass -Scope Process -Force
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+            $s = (New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1')
+            Invoke-Expression $s
             $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
         }
     } catch {
-        if ($Name -eq "Oh-My-Posh") { Write-Fail "Failed to download $Name automatically. Please visit https://ohmyposh.dev" }
+        if ($Name -eq "Oh-My-Posh") { Write-Fail "Auto-install failed. Please install manually from ohmyposh.dev" }
     }
 }
 
