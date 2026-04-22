@@ -1,7 +1,8 @@
 # ⚡ Windows-Terminal-26: Anime Terminal Themes
 
 > Seven anime-inspired terminal themes for Oh-My-Posh + Windows Terminal.  
-> One command. Zero config. Full anime power.
+> One command. Zero config. **System info (fastfetch) included.**
+> Full anime power.
 
 ---
 
@@ -63,10 +64,11 @@ irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/instal
 ## 📋 What Gets Installed
 
 1. **Oh-My-Posh** — prompt engine (via `winget`)
-2. **CaskaydiaCove Nerd Font** — for icons and powerline symbols
-3. **Theme JSON** — saved to `%LOCALAPPDATA%\Programs\oh-my-posh\themes\`
-4. **PowerShell Profile** — updated with the theme loader
-5. **Windows Terminal Color Scheme** — auto-applied to `settings.json`
+2. **Fastfetch** — system info display (via `winget`)
+3. **CaskaydiaCove Nerd Font** — for icons and powerline symbols
+4. **Theme JSON** — saved to `%LOCALAPPDATA%\Programs\oh-my-posh\themes\`
+5. **PowerShell Profile** — updated with the theme loader and auto-fetch
+6. **Windows Terminal Color Scheme** — auto-applied to `settings.json`
 
 ---
 
