@@ -721,16 +721,18 @@ function Install-App {
     param([string]$PackageId, [string]$Name)
     Write-Step "Checking for $Name..."
     if (Get-Command $PackageId -ErrorAction SilentlyContinue) { return }
+    if ($Name -eq "Oh-My-Posh" -and (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) { return }
     
     try {
         if (Get-Command winget.exe -ErrorAction SilentlyContinue) {
             Write-Step "Installing $Name via Winget..."
             & "winget.exe" install $PackageId -e --accept-package-agreements --accept-source-agreements
-        } elseif ($PackageId -eq "JanDeDobbeleer.OhMyPosh") {
-            Write-Fail "Winget not found. Please install Oh-My-Posh manually."
+        } elseif ($Name -eq "Oh-My-Posh") {
+            Write-Step "Winget missing. Trying official web installer for Oh-My-Posh..."
+            Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1')
         }
     } catch {
-        if ($PackageId -eq "JanDeDobbeleer.OhMyPosh") { Write-Fail "Failed to install $Name automatically." }
+        if ($Name -eq "Oh-My-Posh") { Write-Fail "Failed to install $Name automatically." }
     }
 }
 
