@@ -717,23 +717,25 @@ if (-not $selectedKey) { Write-Fail "Invalid choice."; exit }
 $selectedTheme = $THEMES[$selectedKey]
 
 Write-Step "Installing theme: $($selectedTheme.Name)..."
-if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) { 
-    Write-Step "Checking for Oh-My-Posh..."
+function Install-App {
+    param([string]$PackageId, [string]$Name)
+    Write-Step "Checking for $Name..."
+    if (Get-Command $PackageId -ErrorAction SilentlyContinue) { return }
+    
     try {
-        if (Get-Command winget -ErrorAction SilentlyContinue) { 
-            Write-Step "Installing Oh-My-Posh via Winget..."
-            winget install JanDeDobbeleer.OhMyPosh -e --accept-package-agreements --accept-source-agreements
-        } else { Write-Fail "Winget not found. Please install Oh-My-Posh manually." }
-    } catch { Write-Fail "Failed to install Oh-My-Posh automatically." }
-}
-if (-not (Get-Command fastfetch -ErrorAction SilentlyContinue)) { 
-    try {
-        if (Get-Command winget -ErrorAction SilentlyContinue) { 
-            Write-Step "Installing Fastfetch via Winget..."
-            winget install fastfetch -e --accept-package-agreements --accept-source-agreements
+        if (Get-Command winget.exe -ErrorAction SilentlyContinue) {
+            Write-Step "Installing $Name via Winget..."
+            & "winget.exe" install $PackageId -e --accept-package-agreements --accept-source-agreements
+        } elseif ($PackageId -eq "JanDeDobbeleer.OhMyPosh") {
+            Write-Fail "Winget not found. Please install Oh-My-Posh manually."
         }
-    } catch { }
+    } catch {
+        if ($PackageId -eq "JanDeDobbeleer.OhMyPosh") { Write-Fail "Failed to install $Name automatically." }
+    }
 }
+
+Install-App -PackageId "JanDeDobbeleer.OhMyPosh" -Name "Oh-My-Posh"
+Install-App -PackageId "fastfetch" -Name "Fastfetch"
 
 $themeFile = Set-OmpTheme -ThemeKey $selectedKey -ThemeDef $selectedTheme
 Update-PSProfile -ThemeFile $themeFile -BigName $selectedTheme.BigName -SubTitle $selectedTheme.SubTitle
