@@ -19,7 +19,7 @@
 
 param(
     [Parameter()]
-    [ValidateSet("dragonballz","scifi","fantasy","romcom","sliceoflife","minimal","mecha","")]
+    [ValidateSet("dragonballz","scifi","fantasy","romcom","sliceoflife","minimal","mecha","naruto","onepiece","jujutsu","demonslayer","sololeveling","")]
     [string]$Theme = "",
 
     [switch]$Uninstall
@@ -899,6 +899,370 @@ $THEMES = @{
             purple="#6B0FBB"; red="#CC3300"; white="#CCCCCC"; yellow="#CCAA00"
         }
     }
+
+    naruto = @{
+        Name        = "Shinobi: Hidden Leaf"
+        Emoji       = "🍥"
+        Description = "Will of Fire. Orange fire, shinobi black & rasengan blue. Believe it!"
+        BgColor     = "#0F0F0F"
+        FgColor     = "#FF6600"
+        WTScheme    = "AnimeNaruto"
+        AsciiArt    = @"
+     _  _   _   ___ _   _ _____ ___
+    | \| | /_\ | _ \ | | |_   _/ _ \
+    | .` |/ _ \|   / |_| | | || (_) |
+    |_|\_/_/ \_\_|_\\___/  |_| \___/
+           🍥 BELIEVE IT! 🍥
+"@
+        OmpJson = @'
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "🍥 {{ .Shell }} :: {{ .Folder }} | WILL OF FIRE 🍥",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#FF6600",
+          "template": " 🍥 HOKAGE "
+        },
+        {
+          "type": "os",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FF6600",
+          "background": "#1A1A1A",
+          "properties": { "windows": "\uf17a " }
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#0066FF",
+          "properties": { "style": "folder", "folder_separator_icon": " 🍥 " }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#FF6600",
+          "properties": { "branch_icon": "🍥 ", "fetch_status": true }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        { "type": "text", "style": "plain", "foreground": "#FF6600", "template": "🍥 ❯ " }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
+'@
+        WTColors = @{
+            background="#0F0F0F"; foreground="#FF6600"; cursorColor="#0066FF"
+            black="#0F0F0F"; blue="#0066FF"; brightBlack="#333333"; brightBlue="#3399FF"
+            brightCyan="#FFCC00"; brightGreen="#00FF00"; brightPurple="#FF00FF"; brightRed="#FF4400"
+            brightWhite="#FFFFFF"; brightYellow="#FFCC00"; cyan="#00CCCC"; green="#009900"
+            purple="#9900CC"; red="#FF6600"; white="#E0E0E0"; yellow="#FF9900"
+        }
+    }
+
+    onepiece = @{
+        Name        = "Pirate: Grand Line"
+        Emoji       = "👒"
+        Description = "The One Piece is real! Pirate red, straw-hat yellow & ocean blue."
+        BgColor     = "#000510"
+        FgColor     = "#FF0000"
+        WTScheme    = "AnimeOnePiece"
+        AsciiArt    = @"
+      ___  _  _ ___   ___ ___ ___ ___ ___
+     / _ \| \| | __| | _ \_ _| __/ __| __|
+    | (_) | .` | _|  |  _/| || _| (__| _|
+     \___/|_|\_|___| |_| |___|___|___|___|
+           👒 KING OF THE PIRATES 👒
+"@
+        OmpJson = @'
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#FF0000",
+          "template": " 👒 NAKAMA "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#000000",
+          "background": "#FFCC00",
+          "properties": { "style": "folder", "folder_separator_icon": " ☠ " }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#0000FF",
+          "properties": { "branch_icon": "⚓ ", "fetch_status": true }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        { "type": "text", "style": "plain", "foreground": "#FFCC00", "template": "👒 ❯ " }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
+'@
+        WTColors = @{
+            background="#000510"; foreground="#FFCC00"; cursorColor="#FF0000"
+            black="#000510"; blue="#0000FF"; brightBlack="#333333"; brightBlue="#3333FF"
+            brightCyan="#00FFFF"; brightGreen="#00FF00"; brightPurple="#FF00FF"; brightRed="#FF0000"
+            brightWhite="#FFFFFF"; brightYellow="#FFFF00"; cyan="#00CCCC"; green="#009900"
+            purple="#9900CC"; red="#FF0000"; white="#E0E0E0"; yellow="#FFCC00"
+        }
+    }
+
+    jujutsu = @{
+        Name        = "Cursed: Domain Expansion"
+        Emoji       = "👹"
+        Description = "Dark navy & crimson curse energy. Jujutsu Kaisen / Gojo vibes."
+        BgColor     = "#0A0A12"
+        FgColor     = "#E94560"
+        WTScheme    = "AnimeJujutsu"
+        AsciiArt    = @"
+      _ _   _   _ _   _ _____ ___ _   _
+     | | | | | | | | | / __|_ _|_| | | |
+     | | |_| |_| | |_| \__ \| | | | |_| |
+    _/ \___/\___/ \___/|___/___| \_/\___/
+           👹 DOMAIN EXPANSION 👹
+"@
+        OmpJson = @'
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#E94560",
+          "template": " 👹 SORCERER "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#E94560",
+          "background": "#16213E",
+          "properties": { "style": "folder", "folder_separator_icon": " ☠ " }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#0F3460",
+          "properties": { "branch_icon": "👹 ", "fetch_status": true }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        { "type": "text", "style": "plain", "foreground": "#E94560", "template": "👹 ❯ " }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
+'@
+        WTColors = @{
+            background="#0A0A12"; foreground="#E94560"; cursorColor="#FFFFFF"
+            black="#0A0A12"; blue="#0F3460"; brightBlack="#16213E"; brightBlue="#1A1A2E"
+            brightCyan="#00FFFF"; brightGreen="#00FF00"; brightPurple="#FF00FF"; brightRed="#FF0044"
+            brightWhite="#FFFFFF"; brightYellow="#FFFF00"; cyan="#00CCCC"; green="#009900"
+            purple="#9900CC"; red="#E94560"; white="#E0E0E0"; yellow="#FFCC00"
+        }
+    }
+
+    demonslayer = @{
+        Name        = "Slayer: Hashira"
+        Emoji       = "⚔️"
+        Description = "Water breathing green & nichirin pink. Demon Slayer / Tanjiro style."
+        BgColor     = "#081C15"
+        FgColor     = "#16A085"
+        WTScheme    = "AnimeDemonSlayer"
+        AsciiArt    = @"
+     ___  ___ __  __  ___  _  _
+    |   \| __|  \/  |/ _ \| \| |
+    | |) | _|| |\/| | (_) | .` |
+    |___/|___|_|  |_|\___/|_|\_|
+          ⚔️ HASHIRA STYLE ⚔️
+"@
+        OmpJson = @'
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#16A085",
+          "template": " ⚔️ SLAYER "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#16A085",
+          "background": "#D4AC0D",
+          "properties": { "style": "folder", "folder_separator_icon": " ⚔️ " }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#F1948A",
+          "properties": { "branch_icon": "⚔️ ", "fetch_status": true }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        { "type": "text", "style": "plain", "foreground": "#16A085", "template": "⚔️ ❯ " }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
+'@
+        WTColors = @{
+            background="#081C15"; foreground="#16A085"; cursorColor="#F1948A"
+            black="#081C15"; blue="#117A65"; brightBlack="#145A32"; brightBlue="#1ABC9C"
+            brightCyan="#A2D9CE"; brightGreen="#52BE80"; brightPurple="#D2B4DE"; brightRed="#EC7063"
+            brightWhite="#F7F9F9"; brightYellow="#F7DC6F"; cyan="#45B39D"; green="#27AE60"
+            purple="#8E44AD"; red="#C0392B"; white="#EAEDED"; yellow="#D4AC0D"
+        }
+    }
+
+    sololeveling = @{
+        Name        = "Monarch: Shadow"
+        Emoji       = "🕶️"
+        Description = "Deep shadow black & mana neon blue. Solo Leveling / Arise!"
+        BgColor     = "#000000"
+        FgColor     = "#3498DB"
+        WTScheme    = "AnimeSoloLeveling"
+        AsciiArt    = @"
+      ___  ___  _    ___
+     / __|/ _ \| |  / _ \
+     \__ \ (_) | |_| (_) |
+     |___/\___/|____\___/
+           🕶️ ARISE! 🕶️
+"@
+        OmpJson = @'
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#000000",
+          "template": " 🕶️ ARISE "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#000000",
+          "background": "#3498DB",
+          "properties": { "style": "folder", "folder_separator_icon": " 🕶️ " }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#9B59B6",
+          "properties": { "branch_icon": "🕶️ ", "fetch_status": true }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        { "type": "text", "style": "plain", "foreground": "#3498DB", "template": "🕶️ ❯ " }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
+'@
+        WTColors = @{
+            background="#000000"; foreground="#3498DB"; cursorColor="#9B59B6"
+            black="#000000"; blue="#2980B9"; brightBlack="#2C3E50"; brightBlue="#3498DB"
+            brightCyan="#85C1E9"; brightGreen="#2ECC71"; brightPurple="#AF7AC5"; brightRed="#E74C3C"
+            brightWhite="#ECF0F1"; brightYellow="#F1C40F"; cyan="#5DADE2"; green="#27AE60"
+            purple="#8E44AD"; red="#C0392B"; white="#BDC3C7"; yellow="#F39C12"
+        }
+    }
 }
 
 # ═══════════════════════════════════════════════════════════════════
@@ -1125,8 +1489,8 @@ function Show-Menu {
     Write-Color "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" "DarkGray"
     Write-Color ""
 
-    $keys = @("dragonballz","scifi","fantasy","romcom","sliceoflife","minimal","mecha")
-    $nums = @("1","2","3","4","5","6","7")
+    $keys = @("dragonballz","scifi","fantasy","romcom","sliceoflife","minimal","mecha","naruto","onepiece","jujutsu","demonslayer","sololeveling")
+    $nums = @("1","2","3","4","5","6","7","8","9","10","11","12")
 
     for ($i = 0; $i -lt $keys.Length; $i++) {
         $t = $THEMES[$keys[$i]]
@@ -1153,6 +1517,11 @@ function Show-Menu {
         "5" { return "sliceoflife" }
         "6" { return "minimal" }
         "7" { return "mecha" }
+        "8" { return "naruto" }
+        "9" { return "onepiece" }
+        "10" { return "jujutsu" }
+        "11" { return "demonslayer" }
+        "12" { return "sololeveling" }
         default { return "" }
     }
 }

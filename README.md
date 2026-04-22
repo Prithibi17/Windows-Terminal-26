@@ -2,7 +2,7 @@
 ### 🎌 *The Ultimate Anime-Themed DevOps Environment* 🎌
 
 <p align="center">
-  <img src="https://img.shields.io/badge/VERSION-1.0.3-magenta?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/VERSION-1.0.4-magenta?style=for-the-badge" />
   <img src="https://img.shields.io/badge/PLATFORM-WINDOWS-blue?style=for-the-badge&logo=windows" />
   <img src="https://img.shields.io/badge/STYLE-ULTIMATE-orange?style=for-the-badge" />
 </p>
@@ -30,9 +30,6 @@ Fire up your PowerShell and witness the transformation:
 irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/install.ps1 | iex
 ```
 
-> [!TIP]
-> This script is non-destructive! It cleans up old configs before applying new ones, ensuring a perfect install every time.
-
 ---
 
 ## 🎭 The Multi-Verse Collection
@@ -46,6 +43,11 @@ irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/instal
 | **#5** | ☕ | **COZY CAFÉ** | Warm Earth Tones & Sage Greens |
 | **#6** | · | **ZEN MINIMAL** | Stark Black & Crimson Accents |
 | **#7** | ▲ | **NERV COMMAND** | Evangelion Purple & Hazard Orange |
+| **#8** | 🍥 | **HIDDEN LEAF** | Naruto Orange & Shinobi Black |
+| **#9** | 👒 | **GRAND LINE** | Pirate Red & Straw-Hat Yellow |
+| **#10** | 👹 | **DOMAIN EXPANSION** | Jujutsu Navy & Cursed Crimson |
+| **#11** | ⚔️ | **HASHIRA STYLE** | Slayer Green & Nichirin Pink |
+| **#12** | 🕶️ | **SHADOW MONARCH** | Solo Leveling Black & Mana Blue |
 
 ---
 
@@ -67,17 +69,6 @@ To get the exact look from the screenshots, make sure these settings are applied
 | **Acrylic Opacity** | `70% - 85%` |
 | **Cursor Shape** | `Filled Box` |
 | **Background** | `Transparent with Acrylic` |
-
----
-
-## 📁 Project Blueprint
-```bash
-# Core Architecture
-install.ps1           # The Orchestrator
-README.md             # The Guide
-color-schemes.json    # The Palette
-*.omp.json            # The Engines
-```
 
 ---
 
