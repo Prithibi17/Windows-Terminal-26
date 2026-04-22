@@ -1,4 +1,4 @@
-# Anime Terminal Themes Installer - Version 1.0.4 (Elite Edition)
+# Anime Terminal Themes Installer - Version 1.0.5 (Direct Download Edition)
 #Requires -Version 5.1
 <#
 .SYNOPSIS
@@ -728,15 +728,17 @@ function Install-App {
             Write-Step "Installing $Name via Winget..."
             & "winget.exe" install $PackageId -e --accept-package-agreements --accept-source-agreements
         } elseif ($Name -eq "Oh-My-Posh") {
-            Write-Step "Winget missing. Attempting direct web install for Oh-My-Posh..."
+            Write-Step "Winget missing. Force-downloading Oh-My-Posh..."
             Set-ExecutionPolicy Bypass -Scope Process -Force
             [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-            $s = (New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1')
+            $url = "https://ohmyposh.dev/install.ps1"
+            $client = New-Object System.Net.WebClient
+            $s = $client.DownloadString($url)
             Invoke-Expression $s
             $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
         }
     } catch {
-        if ($Name -eq "Oh-My-Posh") { Write-Fail "Auto-install failed. Please install manually from ohmyposh.dev" }
+        if ($Name -eq "Oh-My-Posh") { Write-Fail "Auto-download failed. Please install from: https://ohmyposh.dev" }
     }
 }
 
