@@ -1,79 +1,80 @@
-# 🌌 WINDOWS-TERMINAL-26
-### 🎌 *The Ultimate Anime-Themed DevOps Environment* 🎌
+# ◈ ANIME TERMINAL [UPLINK-26] ◈
+### 🎌 *NEXT-GEN NEURAL INTERFACE FOR DEVOPS* 🎌
 
 <p align="center">
-  <img src="https://img.shields.io/badge/VERSION-1.0.4-magenta?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/PLATFORM-WINDOWS-blue?style=for-the-badge&logo=windows" />
-  <img src="https://img.shields.io/badge/STYLE-ULTIMATE-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/CORE_STABILITY-OPTIMIZED-00FFFF?style=for-the-badge&logo=cpu" />
+  <img src="https://img.shields.io/badge/INTERFACE-NEURAL_LINK-magenta?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/VERSION-1.0.6-yellow?style=for-the-badge" />
 </p>
 
 ```text
-  █████╗ ███╗   ██╗██╗███╗   ███╗███████╗    ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗
- ██╔══██╗████╗  ██║██║████╗ ████║██╔════╝    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║
- ███████║██╔██╗ ██║██║██╔████╔██║█████╗         ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║
- ██╔══██║██║╚██╗██║██║██║╚██╔╝██║██╔══╝         ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║
- ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║███████╗       ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
- ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝╚══════╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+ ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
+   █████╗ ███╗   ██╗██╗███╗   ███╗███████╗    ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗
+  ██╔══██╗████╗  ██║██║████╗ ████║██╔════╝    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║
+  ███████║██╔██╗ ██║██║██╔████╔██║█████╗         ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║
+  ██╔══██║██║╚██╗██║██║██║╚██╔╝██║██╔══╝         ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║
+  ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║███████╗       ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
+  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝╚══════╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+ ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
 ```
 
 ---
 
-## 🎐 Overview
-Elevate your coding workflow with **Windows-Terminal-26**. This project automates the deployment of high-fidelity, anime-inspired terminal themes. No more boring blue screens — just pure aesthetic power every time you open a shell.
+## ◈ [ SYSTEM: OVERVIEW ]
+**Windows-Terminal-26** is more than just a theme pack; it is a full-stack terminal optimization protocol. Designed for developers who demand both performance and aesthetic excellence, it transforms the standard Windows environment into a high-fidelity workspace inspired by the legendary aesthetics of anime and cyber-culture.
 
 ---
 
-## 🚀 One-Tap Installation
-Fire up your PowerShell and witness the transformation:
+## 🚀 [ PROTOCOL: QUICK_INSTALL ]
+Establish an uplink and execute the deployment script. Copy and paste into PowerShell:
 
 ```powershell
-irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/install.ps1 | iex
+# CACHE-BUSTING UPLINK ESTABLISHED
+$v = Get-Random; irm "https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/install.ps1?v=$v" | iex
 ```
 
 ---
 
-## 🎭 The Multi-Verse Collection
+## 🎭 [ DATABASE: THEME_ARCHIVES ]
 
-| Rank | Soul | Universe | Aesthetic |
+| ARCHIVE_ID | SIGIL | UNIVERSE | CHROMATIC_SPEC |
 |:---:|:---:|---|---|
-| **#1** | ⚡ | **DRAGON BALL Z** | Super Saiyan Orange & Energy Blue |
-| **#2** | ◈ | **GHOST PROTOCOL** | Neon Cyan & Cyberpunk Shadows |
-| **#3** | ⚔ | **DUNGEON QUEST** | Arcane Purple & Mythic Gold |
-| **#4** | ♡ | **KAWAII MODE** | Sakura Pink & Love Heart Accents |
-| **#5** | ☕ | **COZY CAFÉ** | Warm Earth Tones & Sage Greens |
-| **#6** | · | **ZEN MINIMAL** | Stark Black & Crimson Accents |
-| **#7** | ▲ | **NERV COMMAND** | Evangelion Purple & Hazard Orange |
-| **#8** | 🍥 | **HIDDEN LEAF** | Naruto Orange & Shinobi Black |
-| **#9** | 👒 | **GRAND LINE** | Pirate Red & Straw-Hat Yellow |
-| **#10** | 👹 | **DOMAIN EXPANSION** | Jujutsu Navy & Cursed Crimson |
-| **#11** | ⚔️ | **HASHIRA STYLE** | Slayer Green & Nichirin Pink |
-| **#12** | 🕶️ | **SHADOW MONARCH** | Solo Leveling Black & Mana Blue |
+| **01** | ⚡ | **DRAGON BALL Z** | `GOLD_FIRE` / `SAIYAN_BLUE` |
+| **02** | ◈ | **GHOST PROTOCOL** | `CYBER_CYAN` / `NEON_MATRIX` |
+| **03** | ⚔ | **DUNGEON QUEST** | `ARCANE_PURPLE` / `MYTHIC_GOLD` |
+| **04** | ♡ | **KAWAII MODE** | `SAKURA_PINK` / `HEART_GLOW` |
+| **05** | ☕ | **COZY CAFÉ** | `EARTH_UMBER` / `SAGE_GREEN` |
+| **06** | · | **ZEN MINIMAL** | `VOID_BLACK` / `CRIMSON_PULSE` |
+| **07** | ▲ | **NERV COMMAND** | `EVA_PURPLE` / `HAZARD_ORANGE` |
+| **08** | 🍥 | **HIDDEN LEAF** | `CHAKRA_ORANGE` / `LEAF_BLACK` |
+| **09** | 👒 | **GRAND LINE** | `PIRATE_RED` / `STAW_HAT_GOLD` |
+| **10** | 👹 | **DOMAIN EXPANSION** | `CURSED_NAVY` / `SPIRIT_RED` |
+| **11** | ⚔️ | **HASHIRA STYLE** | `BREATH_GREEN` / `NICCHIRIN_PINK` |
+| **12** | 🕶️ | **SHADOW MONARCH** | `SHADOW_BLACK` / `MANA_BLUE` |
 
 ---
 
-## ✨ Features that WOW
-- 🏮 **Custom ASCII Banners**: High-resolution banners for every terminal session.
-- ⚡ **Turbo System Info**: Integrated `fastfetch` for real-time hardware monitoring.
-- 🎨 **Pixel-Perfect Sync**: Automatic synchronization of Windows Terminal color schemes.
-- 🔡 **Glyph Support**: Pre-configured for Nerd Fonts to handle icons flawlessly.
-- 🧹 **Auto-Cleanup**: Smart installer that handles profile management without bloating.
+## ✨ [ MODULES: CORE_FEATURES ]
+- 🏮 **NEURAL BANNERS**: Dynamic, high-resolution ASCII headers injected into every session.
+- ⚡ **DATA FETCH**: Integrated hardware telemetry for real-time system monitoring.
+- 🎨 **SYNC_GRID**: Automated Windows Terminal color scheme injection.
+- 🔡 **NERD_GLYPHS**: Full compatibility with CaskaydiaCove and other Nerd Fonts.
+- 🧹 **CLEAN_SWEEP**: Smart installer logic with zero-bloat footprint.
 
 ---
 
-## 🛠️ The "Pro" Setup
-To get the exact look from the screenshots, make sure these settings are applied in your **Windows Terminal Settings**:
+## 🛠️ [ CALIBRATION: OPTIMAL_CONFIG ]
+For peak visual performance, calibrate your **Windows Terminal Settings**:
 
-| Setting | Recommended Value |
-| :--- | :--- |
-| **Font Face** | `CaskaydiaCove Nerd Font` |
-| **Acrylic Opacity** | `70% - 85%` |
-| **Cursor Shape** | `Filled Box` |
-| **Background** | `Transparent with Acrylic` |
+> [!TIP]
+> **FONT:** `CaskaydiaCove Nerd Font` (Essential for Sigils)
+> **OPACITY:** `75%` with `Acrylic` enabled.
+> **CURSOR:** `Filled Box` (Neon pulse look).
 
 ---
 
-## 🧪 Safe Uninstallation
-We believe in freedom. If you need to revert:
+## 🧪 [ PROTOCOL: DECOMMISSION ]
+If you must sever the link and return to standard reality:
 ```powershell
 irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/install.ps1 -OutFile i.ps1; .\i.ps1 -Uninstall
 ```
@@ -81,6 +82,6 @@ irm https://raw.githubusercontent.com/Prithibi17/Windows-Terminal-26/main/instal
 ---
 
 <p align="center">
-  Made with ❤️ for the Anime Community <br>
-  <b><a href="https://github.com/Prithibi17/Windows-Terminal-26">Prithibi17 / Windows-Terminal-26</a></b>
+  ◈ UPLINK ESTABLISHED BY PRITHIBI17 ◈ <br>
+  <b><a href="https://github.com/Prithibi17/Windows-Terminal-26">SYNCHRONIZE_NOW</a></b>
 </p>
