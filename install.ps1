@@ -1,4 +1,4 @@
-# Anime Terminal Themes Installer - Version 1.0.5 (Direct Download Edition)
+# Anime Terminal Themes Installer - Version 1.0.6 (Total Fallback Edition)
 #Requires -Version 5.1
 <#
 .SYNOPSIS
@@ -670,7 +670,7 @@ function Update-PSProfile {
 
 function Show-Menu {
     Clear-Host
-    Write-Color "  ✨ WINDOWS-TERMINAL-26 ✨" "Magenta"
+    Write-Color "  ✨ WINDOWS-TERMINAL-26 [ Version 1.0.6 ] ✨" "Magenta"
     Write-Color "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" "DarkGray"
     $keys = @("dragonballz","scifi","fantasy","romcom","sliceoflife","minimal","mecha","naruto","onepiece","jujutsu","demonslayer","sololeveling")
     for ($i = 0; $i -lt $keys.Length; $i++) {
