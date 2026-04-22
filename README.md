@@ -10,6 +10,7 @@
   <img src="https://img.shields.io/badge/CORE_STABILITY-OPTIMIZED-00FFFF?style=for-the-badge&logo=cpu" />
   <img src="https://img.shields.io/badge/INTERFACE-NEURAL_LINK-magenta?style=for-the-badge" />
   <img src="https://img.shields.io/badge/VERSION-1.0.6-yellow?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/LICENSE-MIT-green?style=for-the-badge" />
 </p>
 
 ---
