@@ -717,8 +717,14 @@ if (-not $selectedKey) { Write-Fail "Invalid choice."; exit }
 $selectedTheme = $THEMES[$selectedKey]
 
 Write-Step "Installing theme: $($selectedTheme.Name)..."
-if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) { Write-Step "Installing Oh-My-Posh..."; winget install JanDeDobbeleer.OhMyPosh -e }
-if (-not (Get-Command fastfetch -ErrorAction SilentlyContinue)) { Write-Step "Installing Fastfetch..."; winget install fastfetch -e }
+if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) { 
+    if (Get-Command winget -ErrorAction SilentlyContinue) { Write-Step "Installing Oh-My-Posh..."; winget install JanDeDobbeleer.OhMyPosh -e --accept-package-agreements --accept-source-agreements }
+    else { Write-Fail "Winget not found. Please install Oh-My-Posh manually." }
+}
+if (-not (Get-Command fastfetch -ErrorAction SilentlyContinue)) { 
+    if (Get-Command winget -ErrorAction SilentlyContinue) { Write-Step "Installing Fastfetch..."; winget install fastfetch -e --accept-package-agreements --accept-source-agreements }
+    else { Write-Step "Fastfetch skipped (Winget missing)." }
+}
 
 $themeFile = Set-OmpTheme -ThemeKey $selectedKey -ThemeDef $selectedTheme
 Update-PSProfile -ThemeFile $themeFile -BigName $selectedTheme.BigName -SubTitle $selectedTheme.SubTitle
