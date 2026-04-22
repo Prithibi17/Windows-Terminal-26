@@ -718,12 +718,21 @@ $selectedTheme = $THEMES[$selectedKey]
 
 Write-Step "Installing theme: $($selectedTheme.Name)..."
 if (-not (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) { 
-    if (Get-Command winget -ErrorAction SilentlyContinue) { Write-Step "Installing Oh-My-Posh..."; winget install JanDeDobbeleer.OhMyPosh -e --accept-package-agreements --accept-source-agreements }
-    else { Write-Fail "Winget not found. Please install Oh-My-Posh manually." }
+    Write-Step "Checking for Oh-My-Posh..."
+    try {
+        if (Get-Command winget -ErrorAction SilentlyContinue) { 
+            Write-Step "Installing Oh-My-Posh via Winget..."
+            winget install JanDeDobbeleer.OhMyPosh -e --accept-package-agreements --accept-source-agreements
+        } else { Write-Fail "Winget not found. Please install Oh-My-Posh manually." }
+    } catch { Write-Fail "Failed to install Oh-My-Posh automatically." }
 }
 if (-not (Get-Command fastfetch -ErrorAction SilentlyContinue)) { 
-    if (Get-Command winget -ErrorAction SilentlyContinue) { Write-Step "Installing Fastfetch..."; winget install fastfetch -e --accept-package-agreements --accept-source-agreements }
-    else { Write-Step "Fastfetch skipped (Winget missing)." }
+    try {
+        if (Get-Command winget -ErrorAction SilentlyContinue) { 
+            Write-Step "Installing Fastfetch via Winget..."
+            winget install fastfetch -e --accept-package-agreements --accept-source-agreements
+        }
+    } catch { }
 }
 
 $themeFile = Set-OmpTheme -ThemeKey $selectedKey -ThemeDef $selectedTheme
