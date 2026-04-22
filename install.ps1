@@ -720,19 +720,22 @@ Write-Step "Installing theme: $($selectedTheme.Name)..."
 function Install-App {
     param([string]$PackageId, [string]$Name)
     Write-Step "Checking for $Name..."
+    if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) { return }
     if (Get-Command $PackageId -ErrorAction SilentlyContinue) { return }
-    if ($Name -eq "Oh-My-Posh" -and (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) { return }
     
     try {
         if (Get-Command winget.exe -ErrorAction SilentlyContinue) {
             Write-Step "Installing $Name via Winget..."
             & "winget.exe" install $PackageId -e --accept-package-agreements --accept-source-agreements
         } elseif ($Name -eq "Oh-My-Posh") {
-            Write-Step "Winget missing. Trying official web installer for Oh-My-Posh..."
-            Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1')
+            Write-Step "Winget missing. Downloading Oh-My-Posh official installer..."
+            $installScript = (New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1')
+            Invoke-Expression $installScript
+            # Force refresh of path for current session
+            $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
         }
     } catch {
-        if ($Name -eq "Oh-My-Posh") { Write-Fail "Failed to install $Name automatically." }
+        if ($Name -eq "Oh-My-Posh") { Write-Fail "Failed to download $Name automatically. Please visit https://ohmyposh.dev" }
     }
 }
 
