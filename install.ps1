@@ -1,3 +1,4 @@
+# Anime Terminal Themes Installer - Version 1.0.3 (Fixed Syntax)
 #Requires -Version 5.1
 <#
 .SYNOPSIS
