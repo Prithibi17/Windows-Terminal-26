@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "NERV // MAGI SYSTEM // {{ .Shell }} // NODE: {{ .Folder }} // SYNC: ACTIVE",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#FF4500",
+          "background": "#1A0000",
+          "template": " ▲ NERV "
+        },
+        {
+          "type": "os",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#00FF00",
+          "background": "#0A0A0A",
+          "properties": {
+            "windows": "\uf17a "
+          }
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FF4500",
+          "background": "#150000",
+          "properties": {
+            "style": "folder",
+            "folder_separator_icon": " // ",
+            "folder_icon": "\uf07b",
+            "home_icon": "\uf015"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#00FF00",
+          "background": "#0A0A0A",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF4500{{ end }}"
+          ],
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#1A0000{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": "▲ ",
+            "fetch_status": true
+          }
+        },
+        {
+          "type": "exit",
+          "style": "diamond",
+          "leading_diamond": "\ue0b0",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#FF0000",
+          "background": "#2A0000",
+          "template": "{{ if gt .Code 0 }} ALERT:{{ .Code }} {{ end }}",
+          "properties": {
+            "always_enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "overflow": "hidden",
+      "segments": [
+        {
+          "type": "battery",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#00FF00",
+          "background": "#0A0A0A",
+          "foreground_templates": [
+            "{{ if lt .Percentage 20 }}#FF0000{{ end }}",
+            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FF4500{{ end }}",
+            "{{ if ge .Percentage 50 }}#00FF00{{ end }}"
+          ],
+          "template": " {{ if .Error }}N/A{{ else }}SYNC:{{ .Percentage }}%{{ end }} ",
+          "properties": {
+            "charged_icon": "▲ ",
+            "charging_icon": "↑ ",
+            "discharging_icon": "↓ "
+          }
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#FF4500",
+          "background": "#0A0A0A",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "template": " ▲ {{ .CurrentDate | date .Format }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FF4500",
+          "template": "▲▲ "
+        }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}

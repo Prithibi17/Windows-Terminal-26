@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "[ SYS://{{ .Shell }} ] [ PATH://{{ .Folder }} ] [ STATUS: ONLINE ]",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#00FFFF",
+          "background": "#001122",
+          "template": " ◈ SYS "
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#003355",
+          "template": " "
+        },
+        {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#00FFFF",
+          "background": "#002244",
+          "properties": {
+            "windows": "\uf17a "
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#003355",
+          "template": " "
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#00FF41",
+          "background": "#001A33",
+          "properties": {
+            "style": "full",
+            "folder_separator_icon": " ▸ ",
+            "folder_icon": "\uf07b",
+            "home_icon": "\uf015"
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#003355",
+          "template": " "
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#00FFFF",
+          "background": "#001A2E",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF00FF{{ end }}"
+          ],
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#1A0033{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": "◈ ",
+            "fetch_status": true
+          }
+        },
+        {
+          "type": "exit",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#FF0044",
+          "background": "#1A0011",
+          "template": "{{ if gt .Code 0 }} ERR:{{ .Code }} {{ end }}",
+          "properties": {
+            "always_enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "overflow": "hidden",
+      "segments": [
+        {
+          "type": "battery",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#00FFFF",
+          "background": "#001122",
+          "foreground_templates": [
+            "{{ if lt .Percentage 20 }}#FF0044{{ end }}",
+            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FF8800{{ end }}",
+            "{{ if ge .Percentage 50 }}#00FFFF{{ end }}"
+          ],
+          "template": " {{ if .Error }}N/A{{ else }}PWR:{{ .Percentage }}%{{ end }} ",
+          "properties": {
+            "charged_icon": "◈ ",
+            "charging_icon": "↑ ",
+            "discharging_icon": "↓ "
+          }
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#00FF41",
+          "background": "#001122",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "template": " ◈ {{ .CurrentDate | date .Format }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#00FFFF",
+          "template": "▸▸ "
+        }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}

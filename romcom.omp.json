@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "♡ {{ .Shell }} ♡ {{ .Folder }} ♡ Sugoi!!",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#FF1493",
+          "template": " ♡ KAWAII "
+        },
+        {
+          "type": "os",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FF1493",
+          "background": "#FFB6C1",
+          "properties": {
+            "windows": "\uf17a "
+          }
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#4A0028",
+          "background": "#FF85A1",
+          "properties": {
+            "style": "folder",
+            "folder_separator_icon": " ✿ ",
+            "folder_icon": "\uf07b",
+            "home_icon": "\uf015"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#FFFFFF",
+          "background": "#C71585",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFD700{{ end }}"
+          ],
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF4500{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": "♡ ",
+            "fetch_status": true
+          }
+        },
+        {
+          "type": "exit",
+          "style": "diamond",
+          "leading_diamond": "\ue0b0",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#FFFFFF",
+          "background": "#8B0000",
+          "template": "{{ if gt .Code 0 }} ✗ {{ .Code }} {{ end }}",
+          "properties": {
+            "always_enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "overflow": "hidden",
+      "segments": [
+        {
+          "type": "battery",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#FF1493",
+          "background": "#FFF0F5",
+          "foreground_templates": [
+            "{{ if lt .Percentage 20 }}#FF0000{{ end }}",
+            "{{ if and (ge .Percentage 20) (lt .Percentage 50) }}#FF8C00{{ end }}",
+            "{{ if ge .Percentage 50 }}#FF1493{{ end }}"
+          ],
+          "template": " {{ if .Error }}N/A{{ else }}♡ {{ .Percentage }}%{{ end }} "
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#FF1493",
+          "background": "#FFF0F5",
+          "properties": {
+            "time_format": "15:04"
+          },
+          "template": " ✿ {{ .CurrentDate | date .Format }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FF69B4",
+          "template": "♡ ❯ "
+        }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
